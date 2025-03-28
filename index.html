@@ -323,7 +323,7 @@
                 const formData = Object.fromEntries(new FormData(this).entries());
                 formData.total_cost = document.getElementById("total_cost").textContent;
 
-                fetch("https://script.google.com/macros/s/AKfycbx3kMuUT4Xsz0or7Ab0qLN5N6CCrPban9N8wlOTYz3nK5gpKpZx6IS7m7yGCwMz5vINcQ/exec", {
+                fetch("https://script.google.com/macros/s/AKfycbzrJwsSiOz8csYrLMWKIRkG0vZKYcMudsiRDUm3Nt7gtj2Y3lffK98t9IUA5ZUXvKm2Jg/exec", {
                     method: "POST",
                     body: JSON.stringify(formData),
                     headers: { "Content-Type": "application/json" }
