@@ -333,7 +333,7 @@ formData.contact = formData.email || formData.phone;
 formDataObj.append("total_cost", document.getElementById("total_cost").textContent);
 formDataObj.append("booking_id", generateBookingId());
 
-fetch("https://script.google.com/macros/s/你的網址/exec", {
+fetch("https://script.google.com/macros/s/AKfycbzEaJvyYAiH7jcWoeN75CNsFme-4W0OMZhzCAVoISOPR1-xUX0y0QIRkH0kh6Lap9_iCg/exec", {
   method: "POST",
   body: formDataObj
 })
