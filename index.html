@@ -312,24 +312,19 @@
         formData.append("total_cost", document.getElementById("total_cost").textContent);
 
         fetch("https://script.google.com/macros/s/AKfycbzEaJvyYAiH7jcWoeN75CNsFme-4W0OMZhzCAVoISOPR1-xUX0y0QIRkH0kh6Lap9_iCg/exec", {
-          method: "POST",
-          mode: 'no-cors',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: formData
-        })
-        .then(response => {
-          if (response.type === 'opaque') {
-            // no-cors 模式下无法读取响应内容，但请求已成功发送
-            localStorage.setItem("vcl_booking_id", bookingId);
-            window.location.href = "thankyou.html";
-          }
-        })
-        .catch(err => {
-          console.error("提交失敗：", err);
-          alert("提交失敗，請稍後再試。");
-        });
+  method: "POST",
+  mode: "no-cors", // 必須設定 no-cors 才能繞過 CORS 錯誤
+  body: formDataObj
+})
+.then(() => {
+  localStorage.setItem("vcl_booking_id", formDataObj.get("booking_id"));
+  window.location.href = "thankyou.html";
+})
+.catch(err => {
+  console.error("錯誤：", err);
+  alert("提交失敗，請稍後再試。");
+});
+
       });
     });
   </script>
