@@ -329,7 +329,7 @@ const formData = Object.fromEntries(formDataObj.entries());
                 formData.total_cost = document.getElementById("total_cost").textContent;
 formData.contact = formData.email || formData.phone;
 
-                fetch("https://script.google.com/macros/s/AKfycbzrJwsSiOz8csYrLMWKIRkG0vZKYcMudsiRDUm3Nt7gtj2Y3lffK98t9IUA5ZUXvKm2Jg/exec", {
+                fetch("https://script.google.com/macros/s/AKfycbzEaJvyYAiH7jcWoeN75CNsFme-4W0OMZhzCAVoISOPR1-xUX0y0QIRkH0kh6Lap9_iCg/exec", {
                     method: "POST",
                     body: JSON.stringify(formData),
                     headers: { "Content-Type": "application/json" }
