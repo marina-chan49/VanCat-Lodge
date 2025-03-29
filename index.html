@@ -165,9 +165,13 @@
                 <input type="text" id="owner_name" name="owner_name" required>
             </div>
             <div class="form-group">
-                <label for="contact">聯絡方式（電話或Email）：</label>
-                <input type="text" id="contact" name="contact" required>
-            </div>
+  <label for="phone">聯絡電話：</label>
+  <input type="text" id="phone" name="phone" required>
+</div>
+<div class="form-group">
+  <label for="email">Email（接收確認信使用）：</label>
+  <input type="email" id="email" name="email" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; transition: all 0.3s ease;">
+</div>
             <div class="form-group">
                 <label for="cat_name">貓咪名字：</label>
                 <input type="text" id="cat_name" name="cat_name" required>
@@ -320,8 +324,10 @@
 
             document.getElementById("boardingForm").addEventListener("submit", function (e) {
                 e.preventDefault();
-                const formData = Object.fromEntries(new FormData(this).entries());
+                const formDataObj = new FormData(this);
+const formData = Object.fromEntries(formDataObj.entries());
                 formData.total_cost = document.getElementById("total_cost").textContent;
+formData.contact = formData.email || formData.phone;
 
                 fetch("https://script.google.com/macros/s/AKfycbzrJwsSiOz8csYrLMWKIRkG0vZKYcMudsiRDUm3Nt7gtj2Y3lffK98t9IUA5ZUXvKm2Jg/exec", {
                     method: "POST",
