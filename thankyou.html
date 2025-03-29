@@ -37,6 +37,20 @@
       color: #8e44ad;
       font-size: 1.2em;
     }
+    .back-button {
+      display: inline-block;
+      margin-top: 30px;
+      background: #9b59b6;
+      color: white;
+      text-decoration: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 1em;
+      transition: background 0.3s ease;
+    }
+    .back-button:hover {
+      background: #8e44ad;
+    }
   </style>
 </head>
 <body>
@@ -44,6 +58,7 @@
     <h1>感謝您的預約！</h1>
     <p>我們已收到您的表單，稍後將與您聯繫。</p>
     <p class="booking-id" id="bookingIdDisplay"></p>
+    <a href="index.html" class="back-button">返回首頁</a>
   </div>
   <script>
     const bookingId = localStorage.getItem("vcl_booking_id");
