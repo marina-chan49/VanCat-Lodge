@@ -323,29 +323,25 @@
             }
 
             document.getElementById("boardingForm").addEventListener("submit", function (e) {
-                e.preventDefault();
-                const formDataObj = new FormData(this);
-const formData = Object.fromEntries(formDataObj.entries());
-                formData.total_cost = document.getElementById("total_cost").textContent;
-formData.contact = formData.email || formData.phone;
+    e.preventDefault();
 
-                const formDataObj = new FormData(this);
-formDataObj.append("total_cost", document.getElementById("total_cost").textContent);
-formDataObj.append("booking_id", generateBookingId());
+    const formData = new FormData(this);
+    formData.append("total_cost", document.getElementById("total_cost").textContent);
+    formData.append("booking_id", generateBookingId());
 
-fetch("https://script.google.com/macros/s/AKfycbzEaJvyYAiH7jcWoeN75CNsFme-4W0OMZhzCAVoISOPR1-xUX0y0QIRkH0kh6Lap9_iCg/exec", {
-  method: "POST",
-  body: formDataObj
-})
-.then(res => res.text())
-.then(result => {
-  localStorage.setItem("vcl_booking_id", formDataObj.get("booking_id"));
-  window.location.href = "thankyou.html";
-})
-.catch(err => {
-  console.error("錯誤：", err);
-  alert("提交失敗，請稍後再試。");
-});
+    fetch("https://script.google.com/macros/s/AKfycbzEaJvyYAiH7jcWoeN75CNsFme-4W0OMZhzCAVoISOPR1-xUX0y0QIRkH0kh6Lap9_iCg/exec", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(result => {
+        localStorage.setItem("vcl_booking_id", formData.get("booking_id"));
+        window.location.href = "thankyou.html";
+    })
+    .catch(err => {
+        console.error("錯誤：", err);
+        alert("提交失敗，請稍後再試。");
+    });
 
                 });
             });
